@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+<title>Add new site</title>
+<meta content="Adding a new website to parse" name="description">
+<meta content="webscraper" name="Rich">
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+
+<!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
+<form action="#" class="form-horizontal" method="POST" th:action="@{/sites/index}" th:object="${site}">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Submit site form</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="websiteUrlInput">Website url</label>
+            <div class="col-md-5">
+                <input class="form-control input-md" id="websiteUrlInput" name="websiteUrlInput"
+                       placeholder="www.abcxyz.com" required="" th:field="*{webUrl}" type="text">
+                <span class="help-block">URL of website</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="websiteNameInput">Website name</label>
+            <div class="col-md-4">
+                <input class="form-control input-md" id="websiteNameInput" name="websiteNameInput" placeholder="ABC"
+                       required="" th:field="*{websiteName}" type="text">
+                <span class="help-block">Enter name of site</span>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submitNewSiteButton">Submit site</label>
+            <div class="col-md-4">
+                <button class="btn btn-primary" id="submitNewSiteButton" name="submitNewSiteButton">Submit</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+</html>

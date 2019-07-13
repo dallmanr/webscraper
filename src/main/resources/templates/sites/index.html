@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Sites</title>
+</head>
+<body>
+<!--/*thymesvVar id="owner" type="com.dallman.petclinic.model.Owner"*/-->
+<h1 th:text="'List of sites'">List of Sites... </h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Date Parsed</th>
+        <th>View details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="recipe" type="com.dallman.webscraper.sites.Site"*/-->
+    <tr th:each="site : ${sites}">
+        <td th:text="${site?.getId()}"></td>
+        <td th:text="${site?.getWebsiteName()}"></td>
+        <td th:text="${site?.getWebUrl()}"></td>
+        <td th:text="${site?.getDateParsed()}"></td>
+        <td><a href="#" th:href="@{'/sites/sitedetails/' + ${site.id}}">View</a></td>
+    </tr>
+    </tbody>
+</table>
+<form action="parseSite">
+    <input name="parseSite" type="submit" value="Site"/>
+</form>
+
+</body>
+</html>
