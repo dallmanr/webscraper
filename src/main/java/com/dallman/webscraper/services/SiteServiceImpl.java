@@ -42,16 +42,9 @@ public class SiteServiceImpl implements SiteService {
     }
 
     @Override
-    public void saveSite(Site site) {
-        String url = site.getWebUrl();
-        String name = site.getWebsiteName();
-        String parsed = site.getDateParsed();
-        siteRepository.addNewSite(url, name, parsed);
-    }
-
-    @Override
-    public void save() {
-        siteRepository.save();
+    public Site save(Site site) {
+        Site aSite = siteRepository.save(site);
+        return aSite;
     }
 
     @Override

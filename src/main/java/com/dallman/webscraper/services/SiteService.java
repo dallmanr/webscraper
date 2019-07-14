@@ -11,9 +11,7 @@ public interface SiteService {
 
     Site findById(Integer i);
 
-    void saveSite(Site site);
-
-    void save();
+    Site save(Site site);
 
     SiteCommand saveSiteCommand(SiteCommand siteCommand);
 }

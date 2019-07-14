@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+<meta application content="text/html; charset=UTF-8" http-equiv="Content-Type"
+/x-www-form-urlencoded/>
 <title>Add new site</title>
 <meta content="Adding a new website to parse" name="description">
 <meta content="webscraper" name="Rich">
@@ -12,7 +13,7 @@
 
 
 <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
-<form action="#" class="form-horizontal" method="POST" th:action="@{/sites/index}" th:object="${site}">
+<form action="#" class="form-horizontal" method="POST" th:action="@{/sites/newsite}" th:object="${site}">
     <fieldset>
 
         <!-- Form Name -->

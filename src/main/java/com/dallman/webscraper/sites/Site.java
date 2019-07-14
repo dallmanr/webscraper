@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Table(name = "websites")
 public class Site extends SiteEntity implements Serializable {
 
-    private Integer id;
+    private int id;
 
     private String websiteName;
 
@@ -24,14 +24,15 @@ public class Site extends SiteEntity implements Serializable {
     public Site() {
     }
 
-    public Site(int id, String webUrl, String dateParsed) {
+    public Site(int id, String websiteName, String webUrl, String dateParsed) {
         this.id = id;
+        this.websiteName = websiteName;
         this.webUrl = webUrl;
         this.dateParsed = dateParsed;
     }
 
     @Override
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

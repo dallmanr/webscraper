@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class SiteEntity extends BaseEntity implements Serializable {
 
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
     @Column(name = "website_name")
     private String websiteName;
