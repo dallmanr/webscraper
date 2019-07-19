@@ -9,33 +9,87 @@
 </head>
 <body>
 <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
-<h1 th:text="'Site details'">Site details </h1>
+<h1 th:text="'Site details'">Site details</h1>
 <div class="container-fluid">
-    <table class="table table-striped">
-        <div class="row">
-            <thead>
-            <tr>
-                <div class="col-lg-4">
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>URL</th>
-                    <th>Date Parsed</th>
-                </div>
-            </tr>
-            </thead>
+    <form action="#" class="form-horizontal" method="POST" th:action="@{/sites/updatesite}" th:object="${site}">
+        <table class="table table-striped">
             <div class="row">
-                <tbody>
-                <div class="col-lg-4">
-                    <td th:text="${site?.getId()}"></td>
-                    <td th:text="${site?.getWebsiteName()}"></td>
-                    <td th:text="${site?.getWebUrl()}"></td>
-                    <td th:text="${site?.getDateAdded()}"></td>
-                    </tr>
+                <thead>
+                <tr>
+                    <div class="col-lg-4">
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                        <th>Date added</th>
+                        <th>Save changes</th>
+                    </div>
+                </tr>
+                </thead>
+                <div class="row">
+                    <tbody>
+                    <div class="col-lg-4">
+                        <td th:text="${site?.getId()}"></td>
+                        <!--                        <td th:text="${site?.getWebsiteName()}">-->
+                        <!-- Text input-->
+                        <td>
+                            <div class="form-group form-group-lg">
+                                <label class="col-md-4 control-label" for="websiteNameInput"></label>
+                                <div class="col-md-5">
+                                    <input class="form-control form-control-lg" id="websiteNameInput"
+                                           name="websiteNameInput"
+                                           placeholder="www.abcxyz.com" required="true" th:field="*{websiteName}"
+                                           th:value="${site.websiteName}"
+                                           type="text">
+                                </div>
+                            </div>
+                        </td>
+
+                        <!--                        <td th:text="${site?.getWebUrl()}">-->
+                        <!-- Text input-->
+                        <td>
+                            <div class="form-group form-group-lg">
+                                <label class="col-md-4 control-label" for="websiteUrlInput"></label>
+                                <div class="col-md-5">
+                                    <input class="form-control form-control-lg" id="websiteUrlInput"
+                                           name="websiteUrlInput"
+                                           placeholder="www.abcxyz.com" required="true" th:field="*{webUrl}"
+                                           th:value="${site.getWebUrl()}"
+                                           type="text">
+                                </div>
+                            </div>
+                        </td>
+
+                        <!--                        <td th:text="${site?.getDateAdded()}">-->
+                        <!-- Text input-->
+                        <td>
+                            <div class="form-group form-group-lg">
+                                <label class="col-md-4 control-label" for="websiteDateAdded"></label>
+                                <div class="col-md-6">
+                                    <input class="form-control form-control-lg" id="websiteDateAdded"
+                                           name="websiteDateAdded"
+                                           placeholder="www.abcxyz.com" required="true" th:field="*{dateAdded}"
+                                           th:value="${site.getDateAdded()}"
+                                           type="text">
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <button class="btn btn-info btn-lg" href="sitedetails.html"
+                                            name="viewSiteDetailsButton"
+                                            type="button">Save
+                                    </button>
+                        </td>
+                    </div>
                 </div>
-                </tbody>
+                </td>
+                </tr>
             </div>
-        </div>
-    </table>
+            </tbody>
+        </table>
+    </form>
 </div>
 </body>
 </html>

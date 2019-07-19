@@ -54,6 +54,7 @@ public class SiteController {
         logger.debug("showSite() id: {}", id);
         System.out.println("showSite() id: " + id);
         Site site = siteService.findById(id);
+        System.out.println(site.toString());
         model.addAttribute("site", site);
         return "/sites/sitedetails";
     }
