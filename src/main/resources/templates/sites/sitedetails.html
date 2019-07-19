@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
 <head>
     <meta charset="UTF-8">
     <title>Site details</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-
+<!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
+<h1 th:text="'Site details'">Site details </h1>
+<div class="container-fluid">
+    <table class="table table-striped">
+        <div class="row">
+            <thead>
+            <tr>
+                <div class="col-lg-4">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Date Parsed</th>
+                </div>
+            </tr>
+            </thead>
+            <div class="row">
+                <tbody>
+                <div class="col-lg-4">
+                    <td th:text="${site?.getId()}"></td>
+                    <td th:text="${site?.getWebsiteName()}"></td>
+                    <td th:text="${site?.getWebUrl()}"></td>
+                    <td th:text="${site?.getDateAdded()}"></td>
+                    </tr>
+                </div>
+                </tbody>
+            </div>
+        </div>
+    </table>
+</div>
 </body>
 </html>

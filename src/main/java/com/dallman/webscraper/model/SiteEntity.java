@@ -1,14 +1,15 @@
 package com.dallman.webscraper.model;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @MappedSuperclass
 public class SiteEntity extends BaseEntity implements Serializable {
 
+    @Id
     @Column(name = "id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "website_name")
     private String websiteName;
@@ -16,8 +17,8 @@ public class SiteEntity extends BaseEntity implements Serializable {
     @Column(name = "website_url")
     private String webUrl;
 
-    @Column(name = "website_parsed")
-    private String dateParsed;
+    @Column(name = "website_added")
+    private String dateAdded;
 
     public String getWebUrl() {
         return webUrl;
@@ -27,19 +28,19 @@ public class SiteEntity extends BaseEntity implements Serializable {
         this.webUrl = webUrl;
     }
 
-    public String getDateParsed() {
-        return dateParsed;
+    public String getDateAdded() {
+        return dateAdded;
     }
 
-    public void setDateParsed(String dateParsed) {
-        this.dateParsed = dateParsed;
+    public void setDateAdded(String dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     @Override
     public String toString() {
         return "SiteEntity{" +
                 "websiteUrl='" + webUrl + '\'' +
-                ", dateFormat=" + dateParsed +
+                ", dateAdded=" + dateAdded +
                 '}';
     }
 }

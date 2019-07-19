@@ -13,32 +13,27 @@ import java.io.Serializable;
 @Table(name = "websites")
 public class Site extends SiteEntity implements Serializable {
 
-    private int id;
+    private Integer id;
 
     private String websiteName;
 
     private String webUrl;
 
-    private String dateParsed;
+    private String dateAdded;
 
     public Site() {
     }
 
-    public Site(int id, String websiteName, String webUrl, String dateParsed) {
+    public Site(Integer id, String websiteName, String webUrl, String dateAdded) {
         this.id = id;
         this.websiteName = websiteName;
         this.webUrl = webUrl;
-        this.dateParsed = dateParsed;
+        this.dateAdded = dateAdded;
     }
 
     @Override
     public int getId() {
         return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getWebUrl() {
@@ -49,12 +44,12 @@ public class Site extends SiteEntity implements Serializable {
         this.webUrl = webUrl;
     }
 
-    public String getDateParsed() {
-        return dateParsed;
+    public String getDateAdded() {
+        return dateAdded;
     }
 
-    public void setDateParsed(String dateParsed) {
-        this.dateParsed = dateParsed;
+    public void setDateAdded(String dateParsed) {
+        this.dateAdded = dateParsed;
     }
 
     public String getWebsiteName() {
@@ -74,7 +69,7 @@ public class Site extends SiteEntity implements Serializable {
     public String toString() {
         return "SiteEntity{" +
                 "website_name='" + websiteName + '\'' +
-                ", website_parsed=" + dateParsed +
+                ", website_added=" + dateAdded +
                 '}';
     }
 }

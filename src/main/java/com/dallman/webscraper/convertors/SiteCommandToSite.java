@@ -25,7 +25,7 @@ public class SiteCommandToSite implements Converter<SiteCommand, Site> {
         }
 
         final Site site = new Site();
-        site.setDateParsed(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()).toString());
+        site.setDateAdded(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()).toString());
         site.setWebUrl(source.getWebUrl());
         site.setId(source.getId());
 

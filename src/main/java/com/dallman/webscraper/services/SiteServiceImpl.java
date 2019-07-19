@@ -36,7 +36,7 @@ public class SiteServiceImpl implements SiteService {
     public Site findById(Integer i) {
         Optional<Site> siteOptional = siteRepository.findById(i);
         if (!siteOptional.isPresent()) {
-            throw new RuntimeException("Recipe not found");
+            throw new RuntimeException("User not found");
         }
         return siteOptional.get();
     }

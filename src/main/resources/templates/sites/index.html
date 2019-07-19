@@ -3,34 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>List of Sites</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<!--/*thymesvVar id="owner" type="com.dallman.petclinic.model.Owner"*/-->
-<h1 th:text="'List of sites'">List of Sites... </h1>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>URL</th>
-        <th>Date Parsed</th>
-        <th>View details</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!--/*@thymesVar id="recipe" type="com.dallman.webscraper.sites.Site"*/-->
-    <tr th:each="site : ${sites}">
-        <td th:text="${site?.getId()}"></td>
-        <td th:text="${site?.getWebsiteName()}"></td>
-        <td th:text="${site?.getWebUrl()}"></td>
-        <td th:text="${site?.getDateParsed()}"></td>
-        <td><a href="#" th:href="@{'/sites/sitedetails/' + ${site.id}}">View</a></td>
-    </tr>
-    </tbody>
-</table>
-<form action="parseSite">
-    <input name="parseSite" type="submit" value="Site"/>
-</form>
+<!--/*thymesvVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
+<h1 th:text="'List of sites'">Home page </h1>
+<div class="container-fluid">
+    <table class="table table-striped">
+        <div class="row">
+            <thead>
+            <tr>
+                <div class="col-lg-4">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Date Added</th>
+                    <th>View details</th>
+                </div>
+            </tr>
+            </thead>
+
+            <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
+            <div class="row">
+                <tbody>
+                <div class="col-lg-4">
+                    <tr th:each="site : ${sites}">
+                        <td th:text="${site?.getId()}"></td>
+                        <td th:text="${site?.getWebsiteName()}"></td>
+                        <td th:text="${site?.getWebUrl()}"></td>
+                        <td th:text="${site?.getDateAdded()}"></td>
+                        <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
+                        <!--                        <form action="#" class="form-horizontal" method="GET"  th:action="@{/sites/sitedetails/{id}()" th:object="${site}">-->
+                        <form action="#" class="form-horizontal" method="GET"
+                              th:action="@{/sites/sitedetails/{siteId}(siteId=${site.getId()})}" th:object="${site}">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <td>
+                                            <button a class="btn btn-primary" href="sitedetails.html"
+                                                    name="viewSiteDetailsButton">View
+                                            </button>
+                                        </td>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </tr>
+                </div>
+                </tbody>
+            </div>
+
+        </div>
+    </table>
+</div>
+
 
 </body>
 </html>

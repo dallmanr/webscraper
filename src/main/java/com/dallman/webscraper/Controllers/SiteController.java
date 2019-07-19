@@ -2,6 +2,8 @@ package com.dallman.webscraper.Controllers;
 
 import com.dallman.webscraper.services.SiteService;
 import com.dallman.webscraper.sites.Site;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class SiteController {
 
     private final SiteService siteService;
+    private final Logger logger = LoggerFactory.getLogger(SiteController.class);
 
     public SiteController(SiteService siteService) {
         this.siteService = siteService;
@@ -41,13 +44,17 @@ public class SiteController {
     @ResponseBody
     public String saveSite(@ModelAttribute Site site) {
         System.out.println("Saving site....");
+        System.out.println(site.toString());
         Site siteResponse = siteService.save(site);
-        return "redirect:/sites/index";
+        return "/sites/index";
     }
 
-    @RequestMapping("/show/{id}")
-    public String findBySiteId(@PathVariable String id, Model model) {
-        model.addAttribute("site", siteService.findById(new Integer(id)));
-        return "sites/show";
+    @RequestMapping(value = "/sitedetails/{id}")
+    public String showSite(@PathVariable("id") Integer id, Model model) {
+        logger.debug("showSite() id: {}", id);
+        System.out.println("showSite() id: " + id);
+        Site site = siteService.findById(id);
+        model.addAttribute("site", site);
+        return "/sites/sitedetails";
     }
 }
