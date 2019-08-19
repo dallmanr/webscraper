@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Site details</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- For ICON buttons    -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
 <h1 th:text="'Site details'">Site details</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <form action="http://localhost:8080/sites/index">
+                <button class="btn" onclick=><i class="fa fa-home"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <form action="#" class="form-horizontal" method="POST" th:action="@{/sites/updatesite}" th:object="${site}">
         <table class="table table-striped">
@@ -27,14 +38,27 @@
                 </thead>
                 <div class="row">
                     <tbody>
-                    <div class="col-lg-4">
-                        <td th:text="${site?.getId()}"></td>
-                        <!--                        <td th:text="${site?.getWebsiteName()}">-->
+                    <div class="form-group row">
+                        <td>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label" for="websiteId"></label>
+                                <div class="col-md-2">
+                                    <input class="form-control form-control-lg" id="websiteId"
+                                           name="websiteId"
+                                           readonly="true"
+                                           th:field="*{id}"
+                                           th:value="${site.getId()}"
+                                           type="text">
+                                </div>
+                            </div>
+                        </td>
+                        <!--                        <td th:text="${site?.getId()}"></td>-->
+                        <!-- <td th:text="${site?.getWebsiteName()}">-->
                         <!-- Text input-->
                         <td>
-                            <div class="form-group form-group-lg">
+                            <div class="form-group row">
                                 <label class="col-md-4 control-label" for="websiteNameInput"></label>
-                                <div class="col-md-5">
+                                <div class="col-md-10">
                                     <input class="form-control form-control-lg" id="websiteNameInput"
                                            name="websiteNameInput"
                                            placeholder="www.abcxyz.com" required="true" th:field="*{websiteName}"
@@ -44,12 +68,12 @@
                             </div>
                         </td>
 
-                        <!--                        <td th:text="${site?.getWebUrl()}">-->
+                        <!-- <td th:text="${site?.getWebUrl()}">-->
                         <!-- Text input-->
                         <td>
-                            <div class="form-group form-group-lg">
+                            <div class="form-group row">
                                 <label class="col-md-4 control-label" for="websiteUrlInput"></label>
-                                <div class="col-md-5">
+                                <div class="col-md-10">
                                     <input class="form-control form-control-lg" id="websiteUrlInput"
                                            name="websiteUrlInput"
                                            placeholder="www.abcxyz.com" required="true" th:field="*{webUrl}"
@@ -59,12 +83,12 @@
                             </div>
                         </td>
 
-                        <!--                        <td th:text="${site?.getDateAdded()}">-->
+                        <!--  <td th:text="${site?.getDateAdded()}">-->
                         <!-- Text input-->
                         <td>
-                            <div class="form-group form-group-lg">
+                            <div class="form-group row">
                                 <label class="col-md-4 control-label" for="websiteDateAdded"></label>
-                                <div class="col-md-6">
+                                <div class="col-md-10">
                                     <input class="form-control form-control-lg" id="websiteDateAdded"
                                            name="websiteDateAdded"
                                            placeholder="www.abcxyz.com" required="true" th:field="*{dateAdded}"
@@ -75,7 +99,7 @@
                         </td>
 
                         <td>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <div class="col-md-4">
                                     <button class="btn btn-info btn-lg" href="sitedetails.html"
                                             name="viewSiteDetailsButton"
