@@ -1,20 +1,21 @@
 package com.dallman.webscraper.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @MappedSuperclass
-public class EventEntity extends BaseEntity {
+public class EventEntity extends BaseEntity implements Serializable {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "event_date_time")
-    private String eventDateTime;
-
 
     @Column(name = "event_name")
     private String eventName;
+
+    @Column(name = "event_date_time")
+    private String eventDateTime;
 
 
     @OneToOne(fetch = FetchType.LAZY,
@@ -22,11 +23,13 @@ public class EventEntity extends BaseEntity {
             mappedBy = "id")
     private LocationEntity locationEntity;
 
-    @Column(name = "event_details")
-    private String eventDetails;
+    private int locationId;
 
     @Column(name = "event_type")
     private String eventType;
+
+    @Column(name = "event_details")
+    private String eventDetails;
 
     public String getEventDateTime() {
         return eventDateTime;
@@ -56,6 +59,10 @@ public class EventEntity extends BaseEntity {
         return locationEntity;
     }
 
+    public int getLocationId() {
+        return locationEntity.getId();
+    }
+
     public void setLocationEntity(LocationEntity locationEntity) {
         this.locationEntity = locationEntity;
     }
@@ -67,6 +74,7 @@ public class EventEntity extends BaseEntity {
     public void setEventType(String eventType) {
         this.eventType = eventType;
     }
+
 
     @Override
     public String toString() {

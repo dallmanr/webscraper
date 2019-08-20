@@ -1,6 +1,5 @@
 package com.dallman.webscraper.events;
 
-
 import com.dallman.webscraper.model.EventEntity;
 import lombok.Data;
 
@@ -10,7 +9,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "websites")
+@Table(name = "events")
 public class Event extends EventEntity implements Serializable {
 
     private Integer id;
@@ -23,7 +22,7 @@ public class Event extends EventEntity implements Serializable {
 
     private String eventType;
 
-    private String EventDetails;
+    private String eventDetails;
 
     public Event() {
     }
@@ -34,7 +33,7 @@ public class Event extends EventEntity implements Serializable {
         this.eventDateTime = eventDateTime;
         this.eventLocation = eventLocation;
         this.eventType = eventType;
-        EventDetails = eventDetails;
+        this.eventDetails = eventDetails;
     }
 
     @Override
@@ -87,12 +86,12 @@ public class Event extends EventEntity implements Serializable {
 
     @Override
     public String getEventDetails() {
-        return EventDetails;
+        return this.eventDetails;
     }
 
     @Override
     public void setEventDetails(String eventDetails) {
-        EventDetails = eventDetails;
+        this.eventDetails = eventDetails;
     }
 
     @Override

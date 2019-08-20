@@ -5,12 +5,14 @@ import com.dallman.webscraper.convertors.EventCommandToEvent;
 import com.dallman.webscraper.convertors.EventToEventCommand;
 import com.dallman.webscraper.events.Event;
 import com.dallman.webscraper.repositories.EventRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Service
 public class EventServiceImpl implements EventService {
 
     private final EventRepository eventRepository;
