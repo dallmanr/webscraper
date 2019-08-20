@@ -1,8 +1,15 @@
 package com.dallman.webscraper.model;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 
 public class LocationEntity extends BaseEntity {
+
+    @Id
+    @Column(name = "id")
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id", nullable = false)
+    private Integer id;
+
     @Column(name = "location_address")
     private String locationAddress;
 

@@ -11,7 +11,10 @@
 </head>
 <body>
 <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
-<h1 th:text="'Site details'">Site details</h1>
+<div class="jumbotron text-center">
+    <h1 th:text="'Site details'">Site details</h1>
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4">
@@ -27,13 +30,11 @@
             <div class="row">
                 <thead>
                 <tr>
-                    <div class="col-lg-4">
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>URL</th>
-                        <th>Date added</th>
-                        <th>Save changes</th>
-                    </div>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Date added</th>
+                    <th>Save changes</th>
                 </tr>
                 </thead>
                 <div class="row">

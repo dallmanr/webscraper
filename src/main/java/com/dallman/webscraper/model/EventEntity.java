@@ -1,34 +1,39 @@
 package com.dallman.webscraper.model;
 
-import javax.persistence.Column;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import javax.persistence.*;
 
+@MappedSuperclass
 public class EventEntity extends BaseEntity {
 
-    @Column(name = "event_date_time")
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    @Id
+    @Column(name = "id")
+    private Integer id;
 
-    @Column(name = "event_location")
-    private String eventLocation;
+    @Column(name = "event_date_time")
+    private String eventDateTime;
+
+
+    @Column(name = "event_name")
+    private String eventName;
+
+
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "id")
+    private LocationEntity locationEntity;
 
     @Column(name = "event_details")
     private String eventDetails;
 
-    public DateFormat getDateFormat() {
-        return dateFormat;
+    @Column(name = "event_type")
+    private String eventType;
+
+    public String getEventDateTime() {
+        return eventDateTime;
     }
 
-    public void setDateFormat(DateFormat dateFormat) {
-        this.dateFormat = dateFormat;
-    }
-
-    public String getEventLocation() {
-        return eventLocation;
-    }
-
-    public void setEventLocation(String eventLocation) {
-        this.eventLocation = eventLocation;
+    public void setEventDateTime(String eventDateTime) {
+        this.eventDateTime = eventDateTime;
     }
 
     public String getEventDetails() {
@@ -39,11 +44,35 @@ public class EventEntity extends BaseEntity {
         this.eventDetails = eventDetails;
     }
 
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public LocationEntity getLocationEntity() {
+        return locationEntity;
+    }
+
+    public void setLocationEntity(LocationEntity locationEntity) {
+        this.locationEntity = locationEntity;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
     @Override
     public String toString() {
         return "EventEntity{" +
-                "dateFormat=" + dateFormat +
-                ", eventLocation='" + eventLocation + '\'' +
+                "dateFormat=" + eventDateTime +
+                ", eventLocation='" + locationEntity + '\'' +
                 ", eventDetails='" + eventDetails + '\'' +
                 '}';
     }
