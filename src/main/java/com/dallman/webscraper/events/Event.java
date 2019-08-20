@@ -1,5 +1,6 @@
 package com.dallman.webscraper.events;
 
+import com.dallman.webscraper.location.Location;
 import com.dallman.webscraper.model.EventEntity;
 import lombok.Data;
 
@@ -18,20 +19,20 @@ public class Event extends EventEntity implements Serializable {
 
     private String eventDateTime;
 
-    private Integer eventLocation;
+    private Location location;
 
-    private String eventType;
+    private EventType eventType;
 
     private String eventDetails;
 
     public Event() {
     }
 
-    public Event(Integer id, String eventName, String eventDateTime, Integer eventLocation, String eventType, String eventDetails) {
+    public Event(Integer id, String eventName, String eventDateTime, Location location, EventType eventType, String eventDetails) {
         this.id = id;
         this.eventName = eventName;
         this.eventDateTime = eventDateTime;
-        this.eventLocation = eventLocation;
+        this.location = location;
         this.eventType = eventType;
         this.eventDetails = eventDetails;
     }
@@ -66,21 +67,21 @@ public class Event extends EventEntity implements Serializable {
         this.eventDateTime = eventDateTime;
     }
 
-    public Integer getEventLocation() {
-        return eventLocation;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setEventLocation(Integer eventLocation) {
-        this.eventLocation = eventLocation;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     @Override
-    public String getEventType() {
+    public EventType getEventType() {
         return eventType;
     }
 
     @Override
-    public void setEventType(String eventType) {
+    public void setEventType(EventType eventType) {
         this.eventType = eventType;
     }
 

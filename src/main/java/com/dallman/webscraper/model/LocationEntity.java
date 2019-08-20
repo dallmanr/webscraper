@@ -1,23 +1,34 @@
 package com.dallman.webscraper.model;
 
+import com.dallman.webscraper.events.Event;
+
 import javax.persistence.*;
 
 public class LocationEntity extends BaseEntity {
 
+    //    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "location_events", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "event")
+    private Event event;
+
     @Id
     @Column(name = "id")
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id", nullable = false)
     private Integer id;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "location_type")
+    private LocationType locationType;
 
     @Column(name = "location_address")
     private String locationAddress;
 
-    @Column(name = "location_type")
-    private String locationType;
+    public LocationType getLocationType() {
+        return locationType;
+    }
 
-    @Column(name = "location_events")
-    private int locationEvents;
+//    @Column(name = "location_events")
+//    private int locationEvents;
 
     public String getLocationAddress() {
         return locationAddress;
@@ -27,27 +38,39 @@ public class LocationEntity extends BaseEntity {
         this.locationAddress = locationAddress;
     }
 
-    public String getLocationType() {
-        return locationType;
-    }
-
-    public void setLocationType(String locationType) {
+    public void setLocationType(LocationType locationType) {
         this.locationType = locationType;
     }
 
-    public int getLocationEvents() {
-        return locationEvents;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setLocationEvents(int locationEvents) {
-        this.locationEvents = locationEvents;
+//    public int getLocationEvents() {
+//        return locationEvents;
+//    }
+//
+//    public void setLocationEvents(int locationEvents) {
+//        this.locationEvents = locationEvents;
+//    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     @Override
     public String toString() {
         return "LocationEntity{" +
                 "locationAddress='" + locationAddress + '\'' +
-                ", locationType='" + locationType + '\'' +
+                ", locationType='" + locationType.toString() + '\'' +
                 '}';
+    }
+
+    public enum LocationType {
+        BAR,
+        RESTAURANT,
+        CLUB,
+        MUSEUM,
+        PARK
     }
 }

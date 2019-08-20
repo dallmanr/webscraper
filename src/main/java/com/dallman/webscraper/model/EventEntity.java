@@ -1,10 +1,16 @@
 package com.dallman.webscraper.model;
 
+import com.dallman.webscraper.location.Location;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @MappedSuperclass
 public class EventEntity extends BaseEntity implements Serializable {
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id", nullable = false)
+    private Location location;
 
     @Id
     @Column(name = "id")
@@ -16,17 +22,13 @@ public class EventEntity extends BaseEntity implements Serializable {
 
     @Column(name = "event_date_time")
     private String eventDateTime;
-
-
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "id")
-    private LocationEntity locationEntity;
-
-    private int locationId;
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "event_type")
-    private String eventType;
+    private EventType eventType;
+
+    public Location getLocationEntity() {
+        return location;
+    }
 
     @Column(name = "event_details")
     private String eventDetails;
@@ -55,33 +57,34 @@ public class EventEntity extends BaseEntity implements Serializable {
         this.eventName = eventName;
     }
 
-    public LocationEntity getLocationEntity() {
-        return locationEntity;
+    public void setLocationEntity(Location location) {
+        this.location = location;
     }
 
-    public int getLocationId() {
-        return locationEntity.getId();
-    }
-
-    public void setLocationEntity(LocationEntity locationEntity) {
-        this.locationEntity = locationEntity;
-    }
-
-    public String getEventType() {
+    public EventType getEventType() {
         return eventType;
     }
 
-    public void setEventType(String eventType) {
+    public void setEventType(EventType eventType) {
         this.eventType = eventType;
     }
-
 
     @Override
     public String toString() {
         return "EventEntity{" +
                 "dateFormat=" + eventDateTime +
-                ", eventLocation='" + locationEntity + '\'' +
+                ", eventLocation='" + location.toString() + '\'' +
                 ", eventDetails='" + eventDetails + '\'' +
                 '}';
+    }
+
+
+    public enum EventType {
+        MUSIC,
+        MOVIE,
+        DANCE,
+        THEATRE,
+        COMEDY,
+        FAMILY,
     }
 }

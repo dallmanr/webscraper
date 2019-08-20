@@ -26,7 +26,7 @@ public class EventToEventCommand implements Converter<Event, EventCommand> {
         command.setId(source.getId());
         command.setEventName(source.getEventName());
         command.setEventDateTime(source.getEventDateTime());
-        command.setEventLocation(source.getEventLocation());
+        command.setLocation(source.getLocation());
         command.setEventType(source.getEventType());
         command.setEventDetails(source.getEventDetails());
         return command;

@@ -28,7 +28,7 @@
     </div>
 </div>
 <div class="container-flud">
-    <!--/*@thymesVar id="site" type="com.dallman.webscraper.events.Event"*/-->
+    <!--/*@thymesVar id="event" type="com.dallman.webscraper.events.Event"*/-->
     <form action="#" class="form-horizontal" method="POST" th:action="@{/events/updateevent}" th:object="${event}">
         <table class="table table-striped">
             <div class="row">
@@ -50,7 +50,7 @@
                                name="eventDateTime"
                                readonly="true"
                                th:field="*{eventDateTime}"
-                               th:value="${event.getEventDateTime}"
+                               th:value="${event.getEventDateTime()}"
                                type="text"/>
                     </td>
                     <td>
@@ -58,7 +58,7 @@
                                name="eventDateTime"
                                readonly="true"
                                th:field="*{eventName}"
-                               th:value="${event.getEventName}"
+                               th:value="${event.getEventName()}"
                                type="text"/>
                     </td>
                     <td>
@@ -66,15 +66,15 @@
                                name="eventDateTime"
                                readonly="true"
                                th:field="*{eventType}"
-                               th:value="${event.getEventType}"
+                               th:value="${event.getEventType().toString()}"
                                type="text"/>
                     </td>
                     <td>
                         <input class="form-control form-control-lg" id="eventLocation"
                                name="eventDateTime"
                                readonly="true"
-                               th:field="*{locationId}"
-                               th:value="${event.getLocationEntity}"
+                               th:field="*{location}"
+                               th:value="${event.getLocation().getLocationName()}"
                                type="text"/>
                     </td>
                     <td>

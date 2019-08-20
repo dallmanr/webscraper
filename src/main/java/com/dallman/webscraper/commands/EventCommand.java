@@ -1,5 +1,7 @@
 package com.dallman.webscraper.commands;
 
+import com.dallman.webscraper.location.Location;
+import com.dallman.webscraper.model.EventEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,8 +14,8 @@ public class EventCommand {
     private int id;
     private String eventName;
     private String eventDateTime;
-    private int eventLocation;
-    private String eventType;
+    private Location location;
+    private EventEntity.EventType eventType;
     private String eventDetails;
 
     public int getId() {
@@ -40,19 +42,19 @@ public class EventCommand {
         this.eventDateTime = eventDateTime;
     }
 
-    public int getEventLocation() {
-        return eventLocation;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setEventLocation(int eventLocation) {
-        this.eventLocation = eventLocation;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    public String getEventType() {
+    public EventEntity.EventType getEventType() {
         return eventType;
     }
 
-    public void setEventType(String eventType) {
+    public void setEventType(EventEntity.EventType eventType) {
         this.eventType = eventType;
     }
 
