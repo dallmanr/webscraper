@@ -22,11 +22,12 @@ public class EventEntity extends BaseEntity implements Serializable {
 
     @Column(name = "event_date_time")
     private String eventDateTime;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "event_type")
     private EventType eventType;
 
-    public Location getLocationEntity() {
+    public Location getLocation() {
         return location;
     }
 

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/events")
@@ -27,9 +26,9 @@ public class EventController {
         dataBinder.setDisallowedFields("id");
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String showAllEvents(Model model) {
+    @RequestMapping(value = "/index")
+    public String getEvents(Model model) {
         model.addAttribute("events", eventService.getEvents());
-        return "/events/index";
+        return "events/index";
     }
 }

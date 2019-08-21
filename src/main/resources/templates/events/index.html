@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta application content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    /x-www-form-urlencoded/>
+    <meta content="webscraper" name="Rich">
+    <meta content="Event details" name="description">
+    <title>Events</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- For ICON buttons    -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+<div class="jumbotron text-center">
+    <h1 th:text="'Events'">Events</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <form action="http://localhost:8080/events/index">
+                <button class="btn" onclick=><i class="fa fa-home"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-flud">
+    <!--/*@thymesVar id="event" type="com.dallman.webscraper.events.Event"*/-->
+    <!--    <form action="#" class="form-horizontal" method="POST" th:action="@{/events/index}" th:object="${event}">-->
+        <table class="table table-striped">
+            <div class="row">
+                <thead>
+                <tr>
+                    <th>Event date & time</th>
+                    <th>Event name</th> <!-- Make this a link to take me to the event location for address etc.. -->
+                    <th>Event type</th>
+                    <th>Event location</th>
+                    <th>Event details</th>
+                    <th>More info</th>
+                </tr>
+                </thead>
+                <!--/*@thymesVar id="event" type="com.dallman.webscraper.events.Event"*/-->
+            <div class="row">
+                <tbody>
+                <div class="col-lg-4">
+                    <tr th:each="event : ${events}">
+                        <td th:text="${event?.getEventDateTime()}"></td>
+                        <td th:text="${event?.getEventName()}"></td>
+                        <td th:text="${event?.getEventType().toString()}"></td>
+                        <td th:text="${event?.getLocation().getLocationName()}"></td>
+                        <td th:text="${event?.getEventDetails()}"></td>
+                        <!-- /*@thymesVar id="site" type="com.dallman.webscraper.events.Event"*/ -->
+                        <form action="#" class="form-horizontal" method="GET"
+                              th:action="@{/events/eventdetails/{eventId}(eventId=${event.getId()})}"
+                              th:object="${event}">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <td>
+                                            <button a class="btn btn-primary" href="sitedetails.html"
+                                                    name="viewSiteDetailsButton">View
+                                            </button>
+                                        </td>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </tr>
+                </div>
+                </tbody>
+            </div>
+            </div>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
