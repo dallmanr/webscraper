@@ -2,6 +2,7 @@ package com.dallman.webscraper.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 public class SiteEntity extends BaseEntity implements Serializable {
@@ -18,7 +19,7 @@ public class SiteEntity extends BaseEntity implements Serializable {
     private String webUrl;
 
     @Column(name = "website_added")
-    private String dateAdded;
+    private LocalDateTime dateAdded;
 
     public String getWebUrl() {
         return webUrl;
@@ -28,12 +29,12 @@ public class SiteEntity extends BaseEntity implements Serializable {
         this.webUrl = webUrl;
     }
 
-    public String getDateAdded() {
+    public LocalDateTime getDateAdded() {
         return dateAdded;
     }
 
-    public void setDateAdded(String dateAdded) {
-        this.dateAdded = dateAdded;
+    public void setDateAdded(LocalDateTime dateAdded) {
+        this.dateAdded = LocalDateTime.now();
     }
 
     @Override

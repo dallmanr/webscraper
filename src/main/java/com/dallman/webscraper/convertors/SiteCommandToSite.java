@@ -7,7 +7,7 @@ import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 @Component
 public class SiteCommandToSite implements Converter<SiteCommand, Site> {
@@ -25,7 +25,7 @@ public class SiteCommandToSite implements Converter<SiteCommand, Site> {
         }
 
         final Site site = new Site();
-        site.setDateAdded(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()).toString());
+        site.setDateAdded(LocalDateTime.now());
         site.setWebUrl(source.getWebUrl());
         site.setId(source.getId());
 

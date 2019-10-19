@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "websites")
 public class Site extends SiteEntity implements Serializable {
+
 
     private Integer id;
 
@@ -19,22 +21,21 @@ public class Site extends SiteEntity implements Serializable {
 
     private String webUrl;
 
-    private String dateAdded;
+    private LocalDateTime dateAdded;
 
     public Site() {
     }
 
-    public Site(Integer id, String websiteName, String webUrl, String dateAdded) {
-        this.id = id;
+    public Site(String websiteName, String webUrl) {
         this.websiteName = websiteName;
         this.webUrl = webUrl;
-        this.dateAdded = dateAdded;
+        this.dateAdded = LocalDateTime.now();
     }
 
-    @Override
-    public int getId() {
-        return id;
-    }
+//    @Override
+//    public Integer getId() {
+//        return id;
+//    }
 
     public String getWebUrl() {
         return webUrl;
@@ -44,12 +45,12 @@ public class Site extends SiteEntity implements Serializable {
         this.webUrl = webUrl;
     }
 
-    public String getDateAdded() {
+    public LocalDateTime getDateAdded() {
         return dateAdded;
     }
 
-    public void setDateAdded(String dateParsed) {
-        this.dateAdded = dateParsed;
+    public void setDateAdded() {
+        this.dateAdded = LocalDateTime.now();
     }
 
     public String getWebsiteName() {
@@ -67,8 +68,9 @@ public class Site extends SiteEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "SiteEntity{" +
-                "website_name='" + websiteName + '\'' +
+        return "Site{" +
+                super.getWebUrl() +
+                " website_name='" + websiteName + '\'' +
                 ", website_added=" + dateAdded +
                 '}';
     }

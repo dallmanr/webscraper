@@ -2,12 +2,15 @@ package com.dallman.webscraper.Controllers;
 
 import com.dallman.webscraper.services.SiteService;
 import com.dallman.webscraper.sites.Site;
+import com.dallman.webscraper.sites.SiteParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 
 @Controller
@@ -58,5 +61,20 @@ public class SiteController {
         System.out.println(site.toString());
         model.addAttribute("site", site);
         return "/sites/sitedetails";
+    }
+
+    @RequestMapping(value = "/parse/{id}")
+    public void parseSite(@PathVariable("id") Integer id, Model model) {
+        logger.debug("showSite() id: {}", id);
+        System.out.println("showSite() id: " + id);
+        Site site = siteService.findById(id);
+        System.out.println(site.getWebUrl());
+        System.out.println(site.getWebsiteName());
+        try {
+            SiteParser.getSiteTitle(site);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("site", site);
     }
 }

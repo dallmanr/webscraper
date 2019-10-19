@@ -109,11 +109,24 @@
                                 </div>
                             </div>
                         </td>
+                        <td>
+                            <form action="#" class="form-horizontal" method="POST"
+                                  th:action="@{/sites/parse/{siteId}(siteId=${site.getId()})}" th:object="${site}">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                        <td>
+                            <button class="btn btn-info btn-lg" href="sitedetails.html"
+                                    name="parseSiteButton">Parse
+                            </button>
+                        </td>
                     </div>
                 </div>
+                </fieldset>
                 </td>
-                </tr>
             </div>
+            </td>
+            </tr>
             </tbody>
         </table>
     </form>

@@ -37,10 +37,10 @@ public class Event extends EventEntity implements Serializable {
         this.eventDetails = eventDetails;
     }
 
-    @Override
-    public int getId() {
-        return id;
-    }
+//    @Override
+//    public Integer getId() {
+//        return id;
+//    }
 
     @Override
     public void setId(Integer id) {

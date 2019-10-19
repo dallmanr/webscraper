@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta application content="text/html; charset=UTF-8" http-equiv="Content-Type"
-    /x-www-form-urlencoded/>
+    <meta application content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta content="webscraper" name="Rich">
     <meta content="Event details" name="description">
     <title>Events</title>
@@ -30,19 +29,19 @@
 <div class="container-flud">
     <!--/*@thymesVar id="event" type="com.dallman.webscraper.events.Event"*/-->
     <!--    <form action="#" class="form-horizontal" method="POST" th:action="@{/events/index}" th:object="${event}">-->
-        <table class="table table-striped">
-            <div class="row">
-                <thead>
-                <tr>
-                    <th>Event date & time</th>
-                    <th>Event name</th> <!-- Make this a link to take me to the event location for address etc.. -->
-                    <th>Event type</th>
-                    <th>Event location</th>
-                    <th>Event details</th>
-                    <th>More info</th>
-                </tr>
-                </thead>
-                <!--/*@thymesVar id="event" type="com.dallman.webscraper.events.Event"*/-->
+    <table class="table table-striped">
+        <div class="row">
+            <thead>
+            <tr>
+                <th>Event date & time</th>
+                <th>Event name</th> <!-- Make this a link to take me to the event location for address etc.. -->
+                <th>Event type</th>
+                <th>Event location</th>
+                <th>Event details</th>
+                <th>More info</th>
+            </tr>
+            </thead>
+            <!--/*@thymesVar id="event" type="com.dallman.webscraper.events.Event"*/-->
             <div class="row">
                 <tbody>
                 <div class="col-lg-4">
@@ -72,9 +71,8 @@
                 </div>
                 </tbody>
             </div>
-            </div>
-        </table>
-    </form>
+        </div>
+    </table>
 </div>
 
 </body>

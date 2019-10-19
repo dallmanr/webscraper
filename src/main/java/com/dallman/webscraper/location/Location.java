@@ -40,7 +40,7 @@ public class Location extends LocationEntity implements Serializable {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
