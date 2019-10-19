@@ -33,6 +33,7 @@ public class Site extends SiteEntity implements Serializable {
     }
 
 
+
     public String getWebUrl() {
         return webUrl;
     }
@@ -61,6 +62,12 @@ public class Site extends SiteEntity implements Serializable {
     public Site getSiteObject() {
         return new Site();
     }
+
+    @Override
+    public Integer getId() {
+        return this.id;
+    }
+
 
     @Override
     public String toString() {

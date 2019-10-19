@@ -11,121 +11,155 @@
 </head>
 <body>
 <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
-<div class="jumbotron text-center">
-    <h1 th:text="'Site details'">Site details</h1>
+<div class="page-header">
+    <div class="jumbotron text-center">
+        <h1 th:text="'Site details'">Site details</h1>
+    </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-1">
             <form action="http://localhost:8080/sites/index">
-                <button class="btn" onclick=><i class="fa fa-home"></i></button>
+                <button class="btn btn-block" onclick=><i class="fa fa-home"></i></button>
             </form>
         </div>
     </div>
 </div>
 <div class="container-fluid">
     <form action="#" class="form-horizontal" method="POST" th:action="@{/sites/updatesite}" th:object="${site}">
-        <table class="table table-striped">
+        <table class="table table-striped table-dark table-bordered table-hover">
             <div class="row">
-                <thead>
+                <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>URL</th>
                     <th>Date added</th>
-                    <th>Save changes</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
-                <div class="row">
-                    <tbody>
-                    <div class="form-group row">
-                        <td>
-                            <div class="form-group row">
-                                <label class="col-md-4 control-label" for="websiteId"></label>
-                                <div class="col-md-2">
-                                    <input class="form-control form-control-lg" id="websiteId"
-                                           name="websiteId"
-                                           readonly="true"
-                                           th:field="*{id}"
-                                           th:value="${site.getId()}"
-                                           type="text">
-                                </div>
-                            </div>
-                        </td>
-                        <!--                        <td th:text="${site?.getId()}"></td>-->
-                        <!-- <td th:text="${site?.getWebsiteName()}">-->
-                        <!-- Text input-->
-                        <td>
-                            <div class="form-group row">
-                                <label class="col-md-4 control-label" for="websiteNameInput"></label>
-                                <div class="col-md-10">
-                                    <input class="form-control form-control-lg" id="websiteNameInput"
-                                           name="websiteNameInput"
-                                           placeholder="www.abcxyz.com" required="true" th:field="*{websiteName}"
-                                           th:value="${site.websiteName}"
-                                           type="text">
-                                </div>
-                            </div>
-                        </td>
-
-                        <!-- <td th:text="${site?.getWebUrl()}">-->
-                        <!-- Text input-->
-                        <td>
-                            <div class="form-group row">
-                                <label class="col-md-4 control-label" for="websiteUrlInput"></label>
-                                <div class="col-md-10">
-                                    <input class="form-control form-control-lg" id="websiteUrlInput"
-                                           name="websiteUrlInput"
-                                           placeholder="www.abcxyz.com" required="true" th:field="*{webUrl}"
-                                           th:value="${site.getWebUrl()}"
-                                           type="text">
-                                </div>
-                            </div>
-                        </td>
-
-                        <!--  <td th:text="${site?.getDateAdded()}">-->
-                        <!-- Text input-->
-                        <td>
-                            <div class="form-group row">
-                                <label class="col-md-4 control-label" for="websiteDateAdded"></label>
-                                <div class="col-md-10">
-                                    <input class="form-control form-control-lg" id="websiteDateAdded"
-                                           name="websiteDateAdded"
-                                           placeholder="www.abcxyz.com" required="true" th:field="*{dateAdded}"
-                                           th:value="${site.getDateAdded()}"
-                                           type="text">
-                                </div>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <button class="btn btn-info btn-lg" href="sitedetails.html"
-                                            name="viewSiteDetailsButton"
-                                            type="button">Save
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <form action="#" class="form-horizontal" method="POST"
-                                  th:action="@{/sites/parse/{siteId}(siteId=${site.getId()})}" th:object="${site}">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                        <td>
-                            <button class="btn btn-info btn-lg" href="sitedetails.html"
-                                    name="parseSiteButton">Parse
-                            </button>
-                        </td>
-                    </div>
-                </div>
-                </fieldset>
-                </td>
             </div>
-            </td>
+            <div class="row">
+                <tbody>
+                <tr>
+                    <!-- <td th:text="${site?.getId()}"></td>-->
+                    <td>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="websiteId"></label>
+                            <div class="col-md-4">
+                                <input class="form-control form-control-lg" disabled
+                                       id="websiteId"
+                                       name="websiteId"
+                                       th:field="*{id}"
+                                       th:value="${site.getId()}"
+                                       type="text">
+                            </div>
+                        </div>
+                    </td>
+
+                    <!-- <td th:text="${site?.getWebsiteName()}">-->
+                    <!-- Text input-->
+                    <td>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="websiteNameInput"></label>
+                            <div class="col-md-10">
+                                <input class="form-control form-control-lg" id="websiteNameInput"
+                                       name="websiteNameInput"
+                                       placeholder="www.abcxyz.com" required="true" th:field="*{websiteName}"
+                                       th:value="${site.websiteName}"
+                                       type="text">
+                            </div>
+                        </div>
+                    </td>
+
+                    <!-- <td th:text="${site?.getWebUrl()}">-->
+                    <!-- Text input-->
+                    <td>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="websiteUrlInput"></label>
+                            <div class="col-md-10">
+                                <input class="form-control form-control-lg" id="websiteUrlInput"
+                                       name="websiteUrlInput"
+                                       placeholder="www.abcxyz.com" required="true" th:field="*{webUrl}"
+                                       th:value="${site.getWebUrl()}"
+                                       type="text">
+                            </div>
+                        </div>
+                    </td>
+
+                    <!--  <td th:text="${site?.getDateAdded()}">-->
+                    <!-- Text input-->
+                    <td>
+                        <div class="form-group row">
+                            <label class="col-md-4 control-label" for="websiteDateAdded"></label>
+                            <div class="col-md-10">
+                                <input class="form-control form-control-lg" id="websiteDateAdded"
+                                       name="websiteDateAdded"
+                                       placeholder="dd/mm/YYYY hh:mm" required="true" th:field="*{dateAdded}"
+                                       th:value="${site.getDateAdded()}"
+                                       type="text">
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <button class="btn btn-info btn-lg" href="sitedetails.html"
+                                        name="saveSiteButton"
+                                        type="button">Save
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <button class="btn btn-info btn-lg" href="sitedetails.html"
+                                        name="parseSiteButton"
+                                        type="button">Parse
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <button class="btn btn-danger btn-lg" data-target="#confirmDeleteModal"
+                                        data-toggle="modal"
+                                        href="sitedetails.html"
+                                        name="deleteSiteButton"
+                                        type="button">Delete
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="confirmDeleteModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                                    <h4 class="modal-title">Confirm delete</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Do you wish to delete the site?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
             </tr>
             </tbody>
         </table>
