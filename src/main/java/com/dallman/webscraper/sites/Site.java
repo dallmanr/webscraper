@@ -23,6 +23,8 @@ public class Site extends SiteEntity implements Serializable {
 
     private LocalDateTime dateAdded;
 
+    private LocalDateTime lastUpdated;
+
     public Site() {
     }
 
@@ -58,6 +60,14 @@ public class Site extends SiteEntity implements Serializable {
         this.websiteName = websiteName;
     }
 
+    public LocalDateTime getLastUpdated() {
+        return this.lastUpdated;
+    }
+
+    public void setDateUpdated(LocalDateTime latUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
     @ModelAttribute
     public Site getSiteObject() {
         return new Site();
@@ -72,7 +82,7 @@ public class Site extends SiteEntity implements Serializable {
     @Override
     public String toString() {
         return "Site{" +
-                super.getWebUrl() +
+                "website_url=" + webUrl +
                 " website_name='" + websiteName + '\'' +
                 ", website_added=" + dateAdded +
                 '}';

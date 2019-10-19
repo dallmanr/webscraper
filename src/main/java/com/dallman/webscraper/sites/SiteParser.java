@@ -3,6 +3,7 @@ package com.dallman.webscraper.sites;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -30,8 +31,8 @@ public class SiteParser {
 
     public static void getTableContents() {
         Element tables = doc.select("table").get(0);
-//        Elements rows = tables.select("tr");
-        Iterator<Element> iterator = tables.select("td").iterator();
+        Elements rows = tables.select("tr");
+        Iterator<Element> iterator = doc.select("td").iterator();
 
         while (iterator.hasNext()) {
             System.out.println(iterator.next().text());

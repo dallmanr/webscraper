@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface SiteRepository extends CrudRepository<Site, Integer> {
 
-    @Query(value = "SELECT websites.id, websites.website_name, websites.website_url, websites.website_added FROM websites", nativeQuery = true)
+    @Query(value = "SELECT websites.id, websites.website_name, websites.website_url, websites.website_added, websites.website_updated FROM websites", nativeQuery = true)
     @Transactional(readOnly = true)
     Collection<Site> findAll();
 

@@ -32,7 +32,7 @@ public class SiteController {
     @RequestMapping("/index")
     public String getSites(Model model) {
         model.addAttribute("sites", siteService.getSites());
-        System.out.println("SiteController: line 32");
+        System.out.println("SiteController: /index");
         return "sites/index";
     }
 

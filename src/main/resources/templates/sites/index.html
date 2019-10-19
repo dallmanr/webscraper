@@ -24,44 +24,79 @@
                     <th>Name</th>
                     <th>URL</th>
                     <th>Date Added</th>
-                    <th>View details</th>
+                    <th>Last updated</th>
+                    <th></th>
+                    <th></th>
                 </div>
             </tr>
             </thead>
+        </div>
 
-            <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
-            <div class="row">
-                <tbody>
-                <div class="col-lg-4">
-                    <tr th:each="site : ${sites}">
-                        <td th:text="${site?.getId()}"></td>
-                        <td th:text="${site?.getWebsiteName()}"></td>
-                        <td th:text="${site?.getWebUrl()}"></td>
-                        <td th:text="${site?.getDateAdded()}"></td>
-                        <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
-                        <!--                        <form action="#" class="form-horizontal" method="GET"  th:action="@{/sites/sitedetails/{id}()" th:object="${site}">-->
-                        <form action="#" class="form-horizontal" method="GET"
-                              th:action="@{/sites/sitedetails/{siteId}(siteId=${site.getId()})}" th:object="${site}">
-                            <fieldset>
-                                <div class="form-group">
+        <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
+        <div class="row">
+            <tbody>
+            <div class="col-lg-4">
+                <tr th:each="site : ${sites}">
+                    <td th:text="${site?.getId()}"></td>
+                    <td th:text="${site?.getWebsiteName()}"></td>
+                    <td th:text="${site?.getWebUrl()}"></td>
+                    <td th:text="${site?.getDateAdded()}"></td>
+                    <td th:text="${site?.getLastUpdated()}"></td>
+                    <!--/*@thymesVar id="site" type="com.dallman.webscraper.sites.Site"*/-->
+                    <!--                        <form action="#" class="form-horizontal" method="GET"  th:action="@{/sites/sitedetails/{id}()" th:object="${site}">-->
+                    <form action="#" class="form-horizontal" method="GET"
+                          th:action="@{/sites/sitedetails/{siteId}(siteId=${site.getId()})}" th:object="${site}">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <td>
+                                        <button a class="btn btn-primary btn-lg" href="sitedetails.html"
+                                                name="viewSiteDetailsButton">View
+                                        </button>
+                                    </td>
+                                </div>
+                            </div>
+                            <td>
+                                <div class="form-group row">
                                     <div class="col-md-4">
-                                        <td>
-                                            <button a class="btn btn-primary" href="sitedetails.html"
-                                                    name="viewSiteDetailsButton">View
-                                            </button>
-                                        </td>
+                                        <button class="btn btn-danger btn-lg" data-target="#confirmDeleteModal"
+                                                data-toggle="modal"
+                                                type="button">Delete
+                                        </button>
                                     </div>
                                 </div>
-                            </fieldset>
-                        </form>
-                    </tr>
-                </div>
-                </tbody>
+                            </td>
+                        </fieldset>
+                    </form>
+                </tr>
             </div>
+            </tbody>
         </div>
     </table>
+
+    <div class="modal fade" id="confirmDeleteModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirm delete</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you wish to delete this site?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal"
+                            type="button">No
+                    </button>
+                    <button class="btn btn-danger" data-dismiss="modal"
+                            type="button">Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
-
-
 </body>
 </html>
