@@ -32,10 +32,6 @@ public class Site extends SiteEntity implements Serializable {
         this.dateAdded = LocalDateTime.now();
     }
 
-//    @Override
-//    public Integer getId() {
-//        return id;
-//    }
 
     public String getWebUrl() {
         return webUrl;

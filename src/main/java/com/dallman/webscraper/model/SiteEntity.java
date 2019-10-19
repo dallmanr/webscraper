@@ -18,7 +18,7 @@ public class SiteEntity extends BaseEntity implements Serializable {
     @Column(name = "website_url")
     private String webUrl;
 
-    @Column(name = "website_added")
+    @Column(name = "website_added", insertable = false, updatable = false)
     private LocalDateTime dateAdded;
 
     public String getWebUrl() {
