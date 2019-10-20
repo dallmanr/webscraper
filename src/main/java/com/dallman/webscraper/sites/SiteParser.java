@@ -6,7 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 public class SiteParser {
 
@@ -30,13 +29,27 @@ public class SiteParser {
     }
 
     public static void getTableContents() {
-        Element tables = doc.select("table").get(0);
-        Elements rows = tables.select("tr");
-        Iterator<Element> iterator = doc.select("td").iterator();
+        Element content = doc.getElementById("content");
+        Elements eventHeadingOneElements = content.getElementsByClass("text_yellow");
+        Elements eventHeadingTwoElements = content.getElementsByClass("text_white");
+//        Iterator<Element> iterator = doc.select("td").iterator();
+//
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next().text());
+//        }
 
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next().text());
+        for (int i = 0, j = 1; i < eventHeadingOneElements.size(); i++, j++) {
+            String eventName = eventHeadingOneElements.get(j).toString();
+            String location = eventHeadingTwoElements.get(i).toString();
+            int indexOfClassYellow = eventName.indexOf("class=\"text_yellow\">") + 20;
+            int indexOfClassTextWhite = location.indexOf("class=\"text_white\">") + 19;
+            System.out.println("Location: ");
+            System.out.println(location.substring(indexOfClassTextWhite, location.length() - 4));
+            System.out.println("Event name: ");
+            System.out.println(eventName.substring(indexOfClassYellow, eventName.length() - 4));
         }
+
+
     }
 
 }
